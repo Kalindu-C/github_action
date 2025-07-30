@@ -25,7 +25,7 @@ jobs:
     - name: Install dependencies using uv
       run: |
         pip install uv
-        uv pip install --system
+        uv pip install --system --group default
 
     - name: Lint with flake8
       run: |
