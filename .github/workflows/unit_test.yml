@@ -22,10 +22,14 @@ jobs:
       with:
         python-version: ${{ matrix.python-version }}
 
+    - name: Export dependencies to requirements.txt
+      run: |
+        echo -e "flake8>=7.3.0\npandas>=2.3.1\npytest>=8.4.1" > requirements.txt
+
     - name: Install dependencies using uv
       run: |
         pip install uv
-        uv pip install --system --group default
+        uv pip install --system --requirements requirements.txt
 
     - name: Lint with flake8
       run: |
